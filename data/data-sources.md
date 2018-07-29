@@ -150,33 +150,15 @@ most variables. Shor and McCarty (2011) explain the `ideology` variable.
 
 ``` r
 # take glimpse at cleaned .csv data 
-read_csv("data/shor-mccarty.csv") %>%
+read_rds("data/shor-mccarty.rds") %>%
   glimpse()
 ```
-
-    ## Parsed with column specification:
-    ## cols(
-    ##   state = col_character(),
-    ##   chamber = col_character(),
-    ##   year = col_integer(),
-    ##   party = col_character(),
-    ##   name = col_character(),
-    ##   ideology = col_double()
-    ## )
-
-    ## Warning in rbind(names(probs), probs_f): number of columns of result is not
-    ## a multiple of vector length (arg 1)
-
-    ## Warning: 7411 parsing failures.
-    ## row # A tibble: 5 x 5 col     row col   expected               actual file                    expected   <int> <chr> <chr>                  <chr>  <chr>                   actual 1  8693 year  no trailing characters e3     'data/shor-mccarty.csv' file 2  8694 year  no trailing characters e3     'data/shor-mccarty.csv' row 3  8695 year  no trailing characters e3     'data/shor-mccarty.csv' col 4  8696 year  no trailing characters e3     'data/shor-mccarty.csv' expected 5  8697 year  no trailing characters e3     'data/shor-mccarty.csv'
-    ## ... ................. ... ................................................................... ........ ................................................................... ...... ................................................................... .... ................................................................... ... ................................................................... ... ................................................................... ........ ...................................................................
-    ## See problems(...) for more details.
 
     ## Observations: 152,352
     ## Variables: 6
     ## $ state    <chr> "AR", "AR", "AR", "AR", "AR", "AR", "AR", "AR", "AR",...
     ## $ chamber  <chr> "senate", "senate", "senate", "senate", "senate", "se...
-    ## $ year     <int> 1993, 1993, 1993, 1993, 1993, 1993, 1993, 1993, 1993,...
+    ## $ year     <dbl> 1993, 1993, 1993, 1993, 1993, 1993, 1993, 1993, 1993,...
     ## $ party    <chr> "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"...
     ## $ name     <chr> "Bearden, Mike", "Beebe, Mike", "Bell, Steve", "Booko...
     ## $ ideology <dbl> -0.010, 0.078, 0.059, 0.053, -0.042, 0.007, 0.310, 0....

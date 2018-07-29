@@ -48,7 +48,7 @@ The R script `R/clean-data.R` tidies the raw data set into a cleaned `.csv` and 
 
 ```{r}
 # take glimpse at cleaned .csv data 
-read_csv("data/shor-mccarty.csv") %>%
+read_rds("data/shor-mccarty.rds") %>%
   glimpse()
 ```
 
