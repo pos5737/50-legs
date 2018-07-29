@@ -1,0 +1,44 @@
+---
+title: "Data Sources"
+output: 
+  github_document:
+    html_preview: false
+---
+
+```{r setup, include=FALSE}
+# included by default in the R Markdown template
+knitr::opts_chunk$set(echo = TRUE)
+# set working directory; knitr defaults to loc of .Rmd file
+knitr::opts_knit$set(root.dir = here::here())
+```
+
+## `state-legislatures`
+
+I downloaded these data from https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/6QWX7Q on 2018-07-29.
+
+The raw data include three files, which I retain in the project files:
+
+* The original data set: `data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta`. The filename originally had spaces. I replaced each space with an `_` to facilitate more robustness in computing.
+* The latest codebook: `data/raw/shor mccarty state legislator data codebook may 2018-1.pdf`
+* The orginal artile: `data/raw/shor and mccarty 2011 final apsr.pdf`
+
+Dataverse suggested the following citation:
+```
+@data{DVN/6QWX7Q_2018,
+author = {Shor, Boris},
+publisher = {Harvard Dataverse},
+title = {Individual State Legislator Shor-McCarty Ideology Data, May 2018 update},
+year = {2018},
+doi = {10.7910/DVN/6QWX7Q},
+url = {https://doi.org/10.7910/DVN/6QWX7Q}
+}
+```
+
+```{r}
+# load packages
+library(tidyverse)
+
+# take glimpse at data 
+haven::read_dta("data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta") %>%
+  glimpse()
+```
