@@ -164,6 +164,14 @@ read_csv("data/shor-mccarty.csv") %>%
     ##   ideology = col_double()
     ## )
 
+    ## Warning in rbind(names(probs), probs_f): number of columns of result is not
+    ## a multiple of vector length (arg 1)
+
+    ## Warning: 7411 parsing failures.
+    ## row # A tibble: 5 x 5 col     row col   expected               actual file                    expected   <int> <chr> <chr>                  <chr>  <chr>                   actual 1  8693 year  no trailing characters e3     'data/shor-mccarty.csv' file 2  8694 year  no trailing characters e3     'data/shor-mccarty.csv' row 3  8695 year  no trailing characters e3     'data/shor-mccarty.csv' col 4  8696 year  no trailing characters e3     'data/shor-mccarty.csv' expected 5  8697 year  no trailing characters e3     'data/shor-mccarty.csv'
+    ## ... ................. ... ................................................................... ........ ................................................................... ...... ................................................................... .... ................................................................... ... ................................................................... ... ................................................................... ........ ...................................................................
+    ## See problems(...) for more details.
+
     ## Observations: 152,352
     ## Variables: 6
     ## $ state    <chr> "AR", "AR", "AR", "AR", "AR", "AR", "AR", "AR", "AR",...

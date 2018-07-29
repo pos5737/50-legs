@@ -19,6 +19,7 @@ leg_df <- leg_df_raw %>%
            sep = "(?<=[a-z])(?=[0-9])") %>%
   # keep only needed variables
   select(state = st, chamber, year, party, name, ideology = np_score) %>%
+  mutate(year = as.numeric(year)) %>%
   # quick check
   glimpse() %>%
   # write cleaned data set to .csv (for github)
