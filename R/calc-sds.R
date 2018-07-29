@@ -27,4 +27,4 @@ filter(sum_df, party == "R") %>%  # keep only Rs
   spread(year, sd) %>%  # put years as columns
   kable(format = "latex", booktabs = TRUE, digits = 2) %>%  # create table 
   kable_styling(latex_options = c("striped", "scale_down")) %>%  # style table
-  cat(file = "doc/tabs/republicans-sd.tex")  # write table to file
+  cat(file = "doc/tabs/republicans-sds.tex")  # write table to file

@@ -10,7 +10,7 @@ data/data-sources.md: data/data-sources.Rmd data/shor-mccarty.rds
 	Rscript -e 'rmarkdown::render("$<")'
 
 # create data frame of SDs by party-state-year
-data/sds.rds: R/calc-sd.R data/shor-mccarty.rds
+data/sds.rds: R/calc-sds.R data/shor-mccarty.rds
 	Rscript $<
 
 # create data frame of SDs by party-state-year
