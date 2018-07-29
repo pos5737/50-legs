@@ -1,47 +1,31 @@
 Data Sources
 ================
 
-`state-legislatures`
---------------------
+## `state-legislatures`
 
-I downloaded these data from <https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/6QWX7Q> on 2018-07-29.
+I downloaded these data from
+<https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/6QWX7Q>
+on 2018-07-29.
 
 The raw data include three files, which I retain in the project files:
 
--   The original data set: `data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta`. The filename originally had spaces. I replaced each space with an `_` to facilitate more robustness in computing.
--   The latest codebook: `data/raw/shor mccarty state legislator data codebook may 2018-1.pdf`
--   The orginal artile: `data/raw/shor and mccarty 2011 final apsr.pdf`
+  - The original data set:
+    `data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta`.
+    The filename originally had spaces. I replaced each space with an
+    `_` to facilitate more robustness in computing.
+  - The latest codebook: `data/raw/shor mccarty state legislator data
+    codebook may 2018-1.pdf`
+  - The orginal artile: `data/raw/shor and mccarty 2011 final apsr.pdf`
 
-Dataverse suggested the following citation:
-
-    @data{DVN/6QWX7Q_2018,
-    author = {Shor, Boris},
-    publisher = {Harvard Dataverse},
-    title = {Individual State Legislator Shor-McCarty Ideology Data, May 2018 update},
-    year = {2018},
-    doi = {10.7910/DVN/6QWX7Q},
-    url = {https://doi.org/10.7910/DVN/6QWX7Q}
-    }
+<!-- end list -->
 
 ``` r
 # load packages
 library(tidyverse)
-```
+library(haven)
 
-    ## ── Attaching packages ──────────────────────── tidyverse 1.2.1 ──
-
-    ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
-    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
-
-    ## ── Conflicts ─────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
-# take glimpse at data 
-haven::read_dta("data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta") %>%
+# take glimpse at raw data 
+read_dta("data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta") %>%
   glimpse()
 ```
 
@@ -148,3 +132,43 @@ haven::read_dta("data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_
     ## $ hdistrict2014 <dbl+lbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
     ## $ hdistrict2015 <dbl+lbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
     ## $ hdistrict2016 <dbl+lbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+
+Dataverse suggested the following citation:
+
+    @data{DVN/6QWX7Q_2018,
+    author = {Shor, Boris},
+    publisher = {Harvard Dataverse},
+    title = {Individual State Legislator Shor-McCarty Ideology Data, May 2018 update},
+    year = {2018},
+    doi = {10.7910/DVN/6QWX7Q},
+    url = {https://doi.org/10.7910/DVN/6QWX7Q}
+    }
+
+The R script `R/clean-data.R` tidies the raw data set into a cleaned
+`.csv` and `.rds` versions. The variable names sufficiently describe
+most variables. Shor and McCarty (2011) explain the `ideology` variable.
+
+``` r
+# take glimpse at cleaned .csv data 
+read_csv("data/shor-mccarty.csv") %>%
+  glimpse()
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   state = col_character(),
+    ##   chamber = col_character(),
+    ##   year = col_integer(),
+    ##   party = col_character(),
+    ##   name = col_character(),
+    ##   ideology = col_double()
+    ## )
+
+    ## Observations: 152,352
+    ## Variables: 6
+    ## $ state    <chr> "AR", "AR", "AR", "AR", "AR", "AR", "AR", "AR", "AR",...
+    ## $ chamber  <chr> "senate", "senate", "senate", "senate", "senate", "se...
+    ## $ year     <int> 1993, 1993, 1993, 1993, 1993, 1993, 1993, 1993, 1993,...
+    ## $ party    <chr> "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"...
+    ## $ name     <chr> "Bearden, Mike", "Beebe, Mike", "Bell, Steve", "Booko...
+    ## $ ideology <dbl> -0.010, 0.078, 0.059, 0.053, -0.042, 0.007, 0.310, 0....

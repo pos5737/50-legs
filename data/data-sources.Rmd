@@ -22,6 +22,16 @@ The raw data include three files, which I retain in the project files:
 * The latest codebook: `data/raw/shor mccarty state legislator data codebook may 2018-1.pdf`
 * The orginal artile: `data/raw/shor and mccarty 2011 final apsr.pdf`
 
+```{r, message=FALSE}
+# load packages
+library(tidyverse)
+library(haven)
+
+# take glimpse at raw data 
+read_dta("data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta") %>%
+  glimpse()
+```
+
 Dataverse suggested the following citation:
 ```
 @data{DVN/6QWX7Q_2018,
@@ -34,11 +44,13 @@ url = {https://doi.org/10.7910/DVN/6QWX7Q}
 }
 ```
 
-```{r}
-# load packages
-library(tidyverse)
+The R script `R/clean-data.R` tidies the raw data set into a cleaned `.csv` and `.rds` versions. The variable names sufficiently describe most variables. Shor and McCarty (2011) explain the `ideology` variable.
 
-# take glimpse at data 
-haven::read_dta("data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta") %>%
+```{r}
+# take glimpse at cleaned .csv data 
+read_csv("data/shor-mccarty.csv") %>%
   glimpse()
 ```
+
+
+
