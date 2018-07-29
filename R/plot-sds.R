@@ -13,4 +13,8 @@ gg <- ggplot(sds_df, aes(x = year, y = sd, color = party)) +
 
 # save plot
 ggsave(filename = "doc/figs/sds.pdf", plot = gg, height = 10, width = 10)
-file.remove("Rplots.pdf")  # see https://github.com/tidyverse/ggplot2/issues/2787
+
+# see https://github.com/tidyverse/ggplot2/issues/2787
+if(file.exists("Rplots.pdf")) {
+  file.remove("Rplots.pdf")  
+}
