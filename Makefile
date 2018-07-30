@@ -1,4 +1,4 @@
-all: doc/figs/sds.pdf data/data-sources.md
+all: doc/het.pdf data/data-sources.md
 
 # clean the raw data; this builds .rds and .csv versions
 ## note that $< :: the filename of the first prereq
@@ -17,9 +17,15 @@ data/sds.rds: R/calc-sds.R data/shor-mccarty.rds
 doc/figs/sds.pdf: R/plot-sds.R data/sds.rds
 	Rscript $<
 
+# compile manuscript	
+doc/het.pdf: doc/het.tex doc/bibliography.bib doc/figs/sds.pdf 
+	cd doc; pdflatex het.tex; pdflatex het.tex; bibtex het.tex; pdflatex het.tex # cd into doc so that pdflatex runs in the doc directory
+	cd doc; rm -f *.bbl *.log *.synctex.gz *.aux *.out
+
 # clean eliminates all compiled files for a fresh start	
 clean:
 	rm -f data/data-sources.md 
 	rm -f data/shor-mccarty.csv data/shor-mccarty.rds
 	rm -f data/sds.csv data/sds.rds doc/tabs/republicans-sds.tex
 	rm -f doc/figs/sds.pdf
+	rm -f doc/het.pdf
