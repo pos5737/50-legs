@@ -6,7 +6,7 @@ data/shor-mccarty.rds: R/clean-data.R data/raw/shor_mccarty_1993-2016_individual
 	Rscript $<
 
 # build data sources document for viewing on github
-data/data-sources.md: data/data-sources.Rmd data/shor-mccarty.rds 
+data/data-sources.md: data/data-sources.Rmd data/shor-mccarty.rds data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta
 	Rscript -e 'rmarkdown::render("$<")'
 
 # create data frame of SDs by party-state-year
