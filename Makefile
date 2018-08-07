@@ -19,14 +19,17 @@ doc/figs/sds.pdf: R/plot-sds.R data/sds.rds
 
 # compile manuscript	
 doc/50-legs.pdf: doc/50-legs.tex doc/bibliography.bib doc/figs/sds.pdf 
-  # cd into doc so that pdflatex runs in the doc directory
-	cd doc; pdflatex 50-legs.tex; pdflatex 50-legs.tex; 
-	cd doc; bibtex 50-legs.tex; pdflatex 50-legs.tex
-	cd doc; rm -f *.bbl *.log *.synctex.gz *.aux *.out
+	# cd into doc so that pdflatex runs in the doc directory
+	cd doc; pdflatex 50-legs
+	cd doc; bibtex 50-legs
+	cd doc; pdflatex 50-legs 
+	cd doc; pdflatex 50-legs 
+	cd doc; rm -f *.bbl *.log *.synctex.gz *.aux *.out *blg
+
 	
 # render README
 README.md: README.Rmd
-	Rscript -e 'rmarkdown::render("$<")'	
+	Rscript -e 'rmarkdown::render("$<")'
 
 # clean eliminates all compiled files for a fresh start	
 clean:

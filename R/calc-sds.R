@@ -1,8 +1,6 @@
 
 # load packages
 library(tidyverse)
-library(kableExtra)
-library(formattable)
 
 # load data
 leg_df <- read_rds("data/shor-mccarty.rds") %>%
