@@ -1,29 +1,37 @@
 Data Sources
 ================
 
-## `state-legislatures`
+`state-legislatures`
+--------------------
 
-I downloaded these data from
-<https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/6QWX7Q>
-on 2018-07-29.
+I downloaded these data from <https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/6QWX7Q> on 2018-07-29.
 
 The raw data include three files, which I retain in the project files:
 
-  - The original data set:
-    `data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta`.
-    The filename originally had spaces. I replaced each space with an
-    `_` to facilitate more robustness in computing.
-  - The latest codebook: `data/raw/shor mccarty state legislator data
-    codebook may 2018-1.pdf`
-  - The orginal artile: `data/raw/shor and mccarty 2011 final apsr.pdf`
-
-<!-- end list -->
+-   The original data set: `data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta`. The filename originally had spaces. I replaced each space with an `_` to facilitate more robustness in computing.
+-   The latest codebook: `data/raw/shor mccarty state legislator data codebook may 2018-1.pdf`
+-   The orginal artile: `data/raw/shor and mccarty 2011 final apsr.pdf`
 
 ``` r
 # load packages
 library(tidyverse)
-library(haven)
+```
 
+    ## Warning: package 'tidyverse' was built under R version 3.5.1
+
+    ## Warning: package 'ggplot2' was built under R version 3.5.1
+
+    ## Warning: package 'purrr' was built under R version 3.5.1
+
+    ## Warning: package 'dplyr' was built under R version 3.5.1
+
+``` r
+library(haven)
+```
+
+    ## Warning: package 'haven' was built under R version 3.5.1
+
+``` r
 # take glimpse at raw data 
 read_dta("data/raw/shor_mccarty_1993-2016_individual_legislator_data_May_2018_release_(Updated_July_2018).dta") %>%
   glimpse()
@@ -144,9 +152,7 @@ Dataverse suggested the following citation:
     url = {https://doi.org/10.7910/DVN/6QWX7Q}
     }
 
-The R script `R/clean-data.R` tidies the raw data set into a cleaned
-`.csv` and `.rds` versions. The variable names sufficiently describe
-most variables. Shor and McCarty (2011) explain the `ideology` variable.
+The R script `R/clean-data.R` tidies the raw data set into a cleaned `.csv` and `.rds` versions. The variable names sufficiently describe most variables. Shor and McCarty (2011) explain the `ideology` variable.
 
 ``` r
 # take glimpse at cleaned .csv data 

@@ -24,7 +24,7 @@ doc/50-legs.pdf: doc/50-legs.tex doc/bibliography.bib doc/figs/sds.pdf
 	cd doc; bibtex 50-legs
 	cd doc; pdflatex 50-legs 
 	cd doc; pdflatex 50-legs 
-	cd doc; rm -f *.bbl *.log *.synctex.gz *.aux *.out *blg
+	cd doc; rm -f *.bbl *.log *.synctex.gz *.aux *.out *.blg *.bst
 
 	
 # render README
