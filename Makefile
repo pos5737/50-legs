@@ -16,6 +16,7 @@ data/sds.rds: R/calc-sds.R data/shor-mccarty.rds
 # create plot of SDs by party-state-year
 doc/figs/sds.pdf: R/plot-sds.R data/sds.rds
 	Rscript $<
+	rm -f Rplots.pdf
 
 # compile manuscript	
 doc/50-legs.pdf: doc/50-legs.tex doc/bibliography.bib doc/figs/sds.pdf 
@@ -24,7 +25,7 @@ doc/50-legs.pdf: doc/50-legs.tex doc/bibliography.bib doc/figs/sds.pdf
 	cd doc; bibtex 50-legs
 	cd doc; pdflatex 50-legs 
 	cd doc; pdflatex 50-legs 
-	cd doc; rm -f *.bbl *.log *.synctex.gz *.aux *.out *.blg *.bst
+	cd doc; rm -f *.bbl *.log *.synctex.gz *.aux *.out *.blg
 
 	
 # render README
